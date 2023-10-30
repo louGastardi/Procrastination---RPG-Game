@@ -1,13 +1,15 @@
 class OverworldMap {
   constructor(config) {
+    this.overword = null;
     this.gameObjects = config.gameObjects;
     this.walls = config.walls || {};
-
+    this.cutSceneSpaces = config.cutSceneSpaces || {};
     this.lowerImage = new Image();
     this.lowerImage.src = config.lowerSrc;
 
     this.upperImage = new Image();
     this.upperImage.src = config.upperSrc;
+    this.isCutscenePlaying = false;
   }
 
   drawLowerImage(ctx, cameraFocus) {
@@ -24,9 +26,50 @@ class OverworldMap {
   }
 
   mountObjects() {
-    Object.values(this.gameObjects).forEach((obj) => {
+    Object.keys(this.gameObjects).forEach((key) => {
+      let obj = this.gameObjects[key];
+      obj.id = key;
+
       obj.mount(this);
     });
+  }
+
+  //Play cutscene
+  async startCutscene(events) {
+    this.isCutscenePlaying = true;
+    for (let i = 0; i < events.length; i++) {
+      const eventHandler = new OverworldEvent({
+        event: events[i],
+        map: this,
+      });
+      await eventHandler.init();
+    }
+
+    this.isCutscenePlaying = false;
+
+    //Reset NPCs to their default behavior
+    Object.values(this.gameObjects).forEach((object) => object.doBehaviorEvent(this));
+  }
+
+  // If hero steps on square with action, this will fire
+  checkForFootstepCutscene() {
+    const hero = this.gameObjects['hero'];
+    const match = this.cutSceneSpaces[`${hero.x},${hero.y}`];
+    if (!this.isCutscenePlaying && match) {
+      this.startCutscene(match[0].events);
+    }
+  }
+
+  // Try to interact woth other objects
+  checkForActionCutscene() {
+    const hero = this.gameObjects['hero'];
+    const nextCoords = utils.nextPosition(hero.x, hero.y, hero.direction);
+    const match = Object.values(this.gameObjects).find((object) => {
+      return `${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`;
+    });
+    if (!this.isCutscenePlaying && match && match.talking.length) {
+      this.startCutscene(match.talking[0].events);
+    }
   }
 
   addWall(x, y) {
@@ -58,6 +101,24 @@ window.OverworldMaps = {
         x: utils.withGrid(7),
         y: utils.withGrid(9),
         src: '/images/characters/people/npc1.png',
+        behaviorLoop: [
+          { type: 'walk', direction: 'left' },
+          { type: 'walk', direction: 'up' },
+          { type: 'stand', direction: 'down', time: 800 },
+          { type: 'walk', direction: 'right' },
+          { type: 'walk', direction: 'down' },
+        ],
+        talking: [
+          {
+            events: [{ type: 'textMessage', text: 'Hello there!', faceHero: 'npc1' }],
+          },
+        ],
+      }),
+
+      npc2: new Person({
+        x: utils.withGrid(8),
+        y: utils.withGrid(5),
+        src: '/images/characters/people/npc1.png',
       }),
     },
     walls: {
@@ -65,6 +126,47 @@ window.OverworldMaps = {
       [utils.asGridCoord(8, 6)]: true,
       [utils.asGridCoord(7, 7)]: true,
       [utils.asGridCoord(8, 7)]: true,
+    },
+    cutSceneSpaces: {
+      [utils.asGridCoord(7, 4)]: [
+        {
+          events: [
+            { who: 'npc2', type: 'walk', direction: 'left' },
+            { who: 'npc2', type: 'stand', direction: 'up', time: 500 },
+            { type: 'textMessage', text: 'Get the fuck out of here!' },
+            { who: 'npc2', type: 'walk', direction: 'right' },
+            { who: 'npc2', type: 'stand', direction: 'down', time: 500 },
+            { who: 'hero', type: 'walk', direction: 'down' },
+            { who: 'hero', type: 'walk', direction: 'left' },
+          ],
+        },
+      ],
+      [utils.asGridCoord(5, 10)]: [
+        {
+          events: [{ type: 'changeMap', map: 'Kitchen' }],
+        },
+      ],
+    },
+  },
+  Kitchen: {
+    lowerSrc: '/images/maps/KitchenLower.png',
+    upperSrc: '/images/maps/KitchenUpper.png',
+    gameObjects: {
+      hero: new Person({
+        isPlayerControlled: true,
+        x: utils.withGrid(5),
+        y: utils.withGrid(5),
+      }),
+      npcB: new Person({
+        x: utils.withGrid(10),
+        y: utils.withGrid(8),
+        src: '/images/characters/people/npc3.png',
+        talking: [
+          {
+            events: [{ type: 'textMessage', text: 'You made it!', faceHero: 'npcB' }],
+          },
+        ],
+      }),
     },
   },
 };

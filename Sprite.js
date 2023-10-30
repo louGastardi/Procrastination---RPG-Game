@@ -48,8 +48,7 @@ class Sprite {
         [0, 3],
       ],
     };
-    this.currentAnimation = 'idle-right';
-
+    this.currentAnimation = 'idle-right'; // config.currentAnimation || "idle-down";
     // Whitch frame is showing
     this.currentAnimationFrame = 0;
 
