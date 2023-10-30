@@ -1,7 +1,9 @@
 class Person extends GameObject {
   constructor(config) {
     super(config);
-    this.movingProgressRemainning = 0;
+    this.movingProgressRemaining = 0;
+    // If true all players in room will move to keyboard
+    this.isPlayerControlled = config.isPlayerControlled || false;
 
     this.directionUpdate = {
       up: ['y', -1],
@@ -12,19 +14,49 @@ class Person extends GameObject {
   }
 
   update(state) {
-    this.updatePosition();
+    if (this.movingProgressRemaining > 0) {
+      this.updatePosition();
+    } else {
+      // Walk command when arrow pressed
+      if (this.isPlayerControlled && state.arrow) {
+        this.startBehavior(state, {
+          type: 'walk',
+          direction: state.arrow,
+        });
+      }
+      this.updateSprite(state);
+    }
+  }
 
-    if (this.movingProgressRemainning === 0 && state.arrow) {
-      this.direction = state.arrow;
-      this.movingProgressRemainning = 16;
+  startBehavior(state, behavior) {
+    //set character direction to same dirction behavior has
+    this.direction = behavior.direction;
+
+    //block character from walking into object
+    if (behavior.type === 'walk') {
+      if (state.map.isSpaceTaken(this.x, this.y, this.direction)) {
+        return;
+      }
+
+      //Make character a moving "wall"- block its next position
+      state.map.moveWall(this.x, this.y, this.direction);
+
+      //Walk command
+      this.movingProgressRemaining = 16;
     }
   }
 
   updatePosition() {
-    if (this.movingProgressRemainning > 0) {
-      const [property, change] = this.directionUpdate[this.direction];
-      this[property] += change;
-      this.movingProgressRemainning -= 1;
+    const [property, change] = this.directionUpdate[this.direction];
+    this[property] += change;
+    this.movingProgressRemaining -= 1;
+  }
+
+  updateSprite() {
+    if (this.movingProgressRemaining > 0) {
+      this.sprite.setAnimation('walk-' + this.direction);
+      return;
     }
+    this.sprite.setAnimation('idle-' + this.direction);
   }
 }

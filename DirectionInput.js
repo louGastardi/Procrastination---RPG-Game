@@ -1,4 +1,4 @@
-class DirectionsInput {
+class DirectionInput {
   constructor() {
     //RESPONSENESS OF KEYDOWN
     this.heldDirections = [];
@@ -20,13 +20,13 @@ class DirectionsInput {
 
       //RESPONSENESS OF KEYDOWN
       if (direction && this.heldDirections.indexOf(direction) === -1) {
-        this.heldDirections.unshift(dir);
+        this.heldDirections.unshift(direction);
       }
     });
 
     document.addEventListener('keyup', (event) => {
       const direction = this.map[event.code];
-      const index = tthis.heldDirections.indexOf(direction);
+      const index = this.heldDirections.indexOf(direction);
 
       //RESPONSENESS OF KEYUP
       if (index > -1) {
