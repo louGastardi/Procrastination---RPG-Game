@@ -46,7 +46,7 @@ class Overworld {
   }
 
   bindActionInput() {
-    new KeyPressListener('Enter', () => {
+    new KeyPressListener('Space', () => {
       // Is there a person here to talk to?
       this.map.checkForActionCutscene();
     });
@@ -68,7 +68,7 @@ class Overworld {
   }
 
   start() {
-    this.startMap(window.OverworldMaps.DemoRoom);
+    this.startMap(window.OverworldMaps.Home);
     this.bindActionInput();
     this.bindHeroPositionCheck();
     this.directionInput = new DirectionInput();
@@ -78,10 +78,13 @@ class Overworld {
 
     // PLAY CUTSCENE
     this.map.startCutscene([
-      { type: 'textMessage', text: 'It is one fine day on the life of Procrastinators...' },
-      { who: 'hero', type: 'walk', direction: 'down' },
-      { who: 'hero', type: 'walk', direction: 'down' },
-      { who: 'hero', type: 'stand', direction: 'up', time: 800 },
+      // { who: 'hero', type: 'walk', direction: 'right' },
+      // { who: 'hero', type: 'walk', direction: 'right' },
+      // { who: 'hero', type: 'walk', direction: 'right' },
+      // { who: 'hero', type: 'walk', direction: 'down' },
+      // { who: 'hero', type: 'walk', direction: 'down' },
+      // { who: 'hero', type: 'stand', direction: 'down', time: 800 },
+      //{ type: 'textMessage', text: 'It is one fine day on the life of Procrastinators...' },
     ]);
   }
 }

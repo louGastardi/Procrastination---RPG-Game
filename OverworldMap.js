@@ -60,7 +60,7 @@ class OverworldMap {
     }
   }
 
-  // Try to interact woth other objects
+  // Try to interact with other objects
   checkForActionCutscene() {
     const hero = this.gameObjects['hero'];
     const nextCoords = utils.nextPosition(hero.x, hero.y, hero.direction);
@@ -88,31 +88,28 @@ class OverworldMap {
 }
 
 window.OverworldMaps = {
-  DemoRoom: {
-    lowerSrc: '/images/maps/DemoLower.png',
-    upperSrc: '/images/maps/DemoUpper.png',
+  Home: {
+    lowerSrc: '/images/maps/mapHome.png',
+    upperSrc: '/images/maps/mapHome_upper.png',
     gameObjects: {
       hero: new Person({
         isPlayerControlled: true,
-        x: utils.withGrid(5),
-        y: utils.withGrid(6),
+        x: utils.withGrid(20),
+        y: utils.withGrid(16),
       }),
-      npc1: new Person({
-        x: utils.withGrid(7),
-        y: utils.withGrid(9),
-        src: '/images/characters/people/npc1.png',
+      cat: new Person({
+        x: utils.withGrid(22),
+        y: utils.withGrid(16),
+        src: '/images/characters/people/sleepyCat.png',
         behaviorLoop: [
-          { type: 'walk', direction: 'left' },
-          { type: 'walk', direction: 'up' },
-          { type: 'stand', direction: 'down', time: 800 },
-          { type: 'walk', direction: 'right' },
-          { type: 'walk', direction: 'down' },
+          { type: 'sleep', direction: 'down', time: 1800 },
+          { type: 'sleep', direction: 'down', time: 1300 },
         ],
-        talking: [
-          {
-            events: [{ type: 'textMessage', text: 'Hello there!', faceHero: 'npc1' }],
-          },
-        ],
+        // talking: [
+        //   {
+        //     events: [{ type: 'textMessage', text: 'Hello there!', faceHero: 'npc1' }],
+        //   },
+        // ],
       }),
 
       npc2: new Person({
@@ -122,10 +119,205 @@ window.OverworldMaps = {
       }),
     },
     walls: {
-      [utils.asGridCoord(7, 6)]: true,
-      [utils.asGridCoord(8, 6)]: true,
-      [utils.asGridCoord(7, 7)]: true,
-      [utils.asGridCoord(8, 7)]: true,
+      //UP
+      [utils.asGridCoord(0, 3)]: true,
+      [utils.asGridCoord(1, 3)]: true,
+      [utils.asGridCoord(2, 3)]: true,
+      [utils.asGridCoord(3, 3)]: true,
+      [utils.asGridCoord(4, 3)]: true,
+      [utils.asGridCoord(5, 3)]: true,
+      [utils.asGridCoord(6, 3)]: true,
+      [utils.asGridCoord(7, 3)]: true,
+      [utils.asGridCoord(8, 3)]: true,
+      [utils.asGridCoord(9, 3)]: true,
+      [utils.asGridCoord(10, 3)]: true,
+      [utils.asGridCoord(11, 3)]: true,
+      [utils.asGridCoord(12, 3)]: true,
+      [utils.asGridCoord(13, 3)]: true,
+      [utils.asGridCoord(14, 3)]: true,
+      [utils.asGridCoord(15, 3)]: true,
+      [utils.asGridCoord(16, 3)]: true,
+      [utils.asGridCoord(17, 3)]: true,
+      [utils.asGridCoord(18, 3)]: true,
+      [utils.asGridCoord(19, 3)]: true,
+      [utils.asGridCoord(20, 3)]: true,
+      [utils.asGridCoord(21, 3)]: true,
+      [utils.asGridCoord(22, 3)]: true,
+      [utils.asGridCoord(23, 3)]: true,
+      [utils.asGridCoord(24, 3)]: true,
+      [utils.asGridCoord(25, 3)]: true,
+
+      // Left
+      [utils.asGridCoord(0, 4)]: true,
+      [utils.asGridCoord(0, 5)]: true,
+      [utils.asGridCoord(1, 6)]: true,
+      [utils.asGridCoord(1, 7)]: true,
+      [utils.asGridCoord(1, 8)]: true,
+      [utils.asGridCoord(2, 6)]: true,
+      [utils.asGridCoord(2, 7)]: true,
+      [utils.asGridCoord(2, 8)]: true,
+      [utils.asGridCoord(0, 9)]: true,
+      [utils.asGridCoord(0, 10)]: true,
+      [utils.asGridCoord(0, 11)]: true,
+      [utils.asGridCoord(0, 12)]: true,
+      [utils.asGridCoord(1, 13)]: true,
+      [utils.asGridCoord(1, 14)]: true,
+      [utils.asGridCoord(1, 15)]: true,
+      [utils.asGridCoord(1, 16)]: true,
+      [utils.asGridCoord(0, 17)]: true,
+      [utils.asGridCoord(0, 18)]: true,
+
+      //Down
+      [utils.asGridCoord(0, 18)]: true,
+      [utils.asGridCoord(1, 18)]: true,
+      [utils.asGridCoord(2, 18)]: true,
+      [utils.asGridCoord(3, 17)]: true,
+      [utils.asGridCoord(4, 17)]: true,
+      [utils.asGridCoord(5, 17)]: true,
+      [utils.asGridCoord(6, 17)]: true,
+      [utils.asGridCoord(7, 17)]: true,
+      [utils.asGridCoord(8, 17)]: true,
+      [utils.asGridCoord(9, 17)]: true,
+      [utils.asGridCoord(10, 17)]: true,
+      [utils.asGridCoord(11, 17)]: true,
+      [utils.asGridCoord(12, 18)]: true,
+      [utils.asGridCoord(13, 17)]: true,
+      [utils.asGridCoord(14, 18)]: true,
+      [utils.asGridCoord(15, 18)]: true,
+      [utils.asGridCoord(16, 18)]: true,
+      [utils.asGridCoord(17, 18)]: true,
+      [utils.asGridCoord(18, 18)]: true,
+      [utils.asGridCoord(19, 18)]: true,
+      [utils.asGridCoord(20, 18)]: true,
+      [utils.asGridCoord(21, 18)]: true,
+      [utils.asGridCoord(22, 18)]: true,
+      [utils.asGridCoord(23, 18)]: true,
+      [utils.asGridCoord(24, 18)]: true,
+      [utils.asGridCoord(25, 18)]: true,
+
+      // Right
+      [utils.asGridCoord(25, 4)]: true,
+      [utils.asGridCoord(25, 5)]: true,
+      [utils.asGridCoord(25, 6)]: true,
+      [utils.asGridCoord(25, 7)]: true,
+      [utils.asGridCoord(25, 8)]: true,
+      [utils.asGridCoord(25, 6)]: true,
+      [utils.asGridCoord(25, 7)]: true,
+      [utils.asGridCoord(25, 8)]: true,
+      [utils.asGridCoord(25, 9)]: true,
+      [utils.asGridCoord(25, 10)]: true,
+      [utils.asGridCoord(25, 11)]: true,
+      [utils.asGridCoord(25, 12)]: true,
+      [utils.asGridCoord(25, 13)]: true,
+      [utils.asGridCoord(25, 14)]: true,
+      [utils.asGridCoord(25, 15)]: true,
+      [utils.asGridCoord(25, 16)]: true,
+      [utils.asGridCoord(25, 17)]: true,
+      [utils.asGridCoord(25, 18)]: true,
+
+      //Blocked Walls Inside
+      [utils.asGridCoord(1, 11)]: true,
+      [utils.asGridCoord(2, 11)]: true,
+      [utils.asGridCoord(3, 11)]: true,
+      [utils.asGridCoord(4, 11)]: true,
+      [utils.asGridCoord(7, 11)]: true,
+      [utils.asGridCoord(8, 11)]: true,
+      [utils.asGridCoord(9, 11)]: true,
+      [utils.asGridCoord(10, 11)]: true,
+      [utils.asGridCoord(11, 11)]: true,
+      [utils.asGridCoord(14, 11)]: true,
+      [utils.asGridCoord(15, 11)]: true,
+      [utils.asGridCoord(16, 11)]: true,
+      [utils.asGridCoord(17, 11)]: true,
+      [utils.asGridCoord(18, 11)]: true,
+      [utils.asGridCoord(19, 11)]: true,
+      [utils.asGridCoord(22, 11)]: true,
+      [utils.asGridCoord(23, 11)]: true,
+      [utils.asGridCoord(24, 11)]: true,
+
+      [utils.asGridCoord(11, 4)]: true,
+      [utils.asGridCoord(11, 5)]: true,
+      [utils.asGridCoord(11, 8)]: true,
+      [utils.asGridCoord(11, 9)]: true,
+      [utils.asGridCoord(11, 10)]: true,
+
+      [utils.asGridCoord(15, 12)]: true,
+      [utils.asGridCoord(15, 13)]: true,
+      [utils.asGridCoord(15, 14)]: true,
+      [utils.asGridCoord(15, 17)]: true,
+
+      //Blocked Objects
+      [utils.asGridCoord(9, 4)]: true,
+      [utils.asGridCoord(10, 4)]: true,
+
+      [utils.asGridCoord(7, 12)]: true, //Kitchen
+      [utils.asGridCoord(8, 12)]: true,
+      [utils.asGridCoord(9, 12)]: true,
+      [utils.asGridCoord(10, 12)]: true,
+      [utils.asGridCoord(11, 12)]: true,
+      [utils.asGridCoord(14, 12)]: true,
+
+      [utils.asGridCoord(13, 15)]: true,
+      [utils.asGridCoord(14, 15)]: true,
+      [utils.asGridCoord(13, 16)]: true,
+      [utils.asGridCoord(14, 16)]: true,
+
+      [utils.asGridCoord(15, 10)]: true, //Living Room
+      [utils.asGridCoord(16, 10)]: true, //TV
+      [utils.asGridCoord(17, 10)]: true,
+      [utils.asGridCoord(18, 10)]: true,
+      [utils.asGridCoord(18, 11)]: true,
+
+      [utils.asGridCoord(15, 7)]: true, //Couch
+      [utils.asGridCoord(16, 7)]: true,
+      [utils.asGridCoord(17, 7)]: true,
+      [utils.asGridCoord(18, 7)]: true,
+      [utils.asGridCoord(19, 7)]: true, //Phone
+
+      [utils.asGridCoord(13, 4)]: true, //Shelf
+      [utils.asGridCoord(14, 4)]: true,
+      [utils.asGridCoord(15, 4)]: true,
+      [utils.asGridCoord(16, 4)]: true,
+
+      [utils.asGridCoord(21, 4)]: true, //Lamp
+      [utils.asGridCoord(22, 4)]: true, //Table
+      [utils.asGridCoord(22, 5)]: true,
+      [utils.asGridCoord(23, 5)]: true,
+      [utils.asGridCoord(24, 5)]: true,
+
+      [utils.asGridCoord(16, 12)]: true, //Bad
+      [utils.asGridCoord(17, 12)]: true,
+      [utils.asGridCoord(18, 12)]: true,
+      [utils.asGridCoord(16, 13)]: true,
+      [utils.asGridCoord(17, 13)]: true,
+      [utils.asGridCoord(18, 13)]: true,
+
+      [utils.asGridCoord(16, 15)]: true, // Sink
+      [utils.asGridCoord(16, 16)]: true,
+      [utils.asGridCoord(24, 16)]: true, //wc
+
+      //Objects that check To-Do
+      [utils.asGridCoord(1, 4)]: true, //Book
+      [utils.asGridCoord(9, 10)]: true, //Plant
+      [utils.asGridCoord(12, 4)]: true, //Plant
+      [utils.asGridCoord(16, 14)]: true, //Plant
+      [utils.asGridCoord(2, 12)]: true, //Trash
+      [utils.asGridCoord(14, 7)]: true, //Trash
+      [utils.asGridCoord(14, 12)]: true, //CatFood
+      [utils.asGridCoord(23, 12)]: true, //laundry
+      [utils.asGridCoord(24, 12)]: true, //laundry
+      [utils.asGridCoord(23, 6)]: true, //laundry
+
+      //Procratination Triggers
+
+      // [utils.asGridCoord(5, 11)]: true,
+      // [utils.asGridCoord(8, 7)]: true,
+      // [utils.asGridCoord(11, 14)]: true,
+      // [utils.asGridCoord(17, 8)]: true,
+      // [utils.asGridCoord(13, 5)]: true,
+      // [utils.asGridCoord(22, 16)]: true,
+      // [utils.asGridCoord(18, 16)]: true,
+      // [utils.asGridCoord(3, 15)]: true,
     },
     cutSceneSpaces: {
       [utils.asGridCoord(7, 4)]: [
@@ -141,32 +333,11 @@ window.OverworldMaps = {
           ],
         },
       ],
-      [utils.asGridCoord(5, 10)]: [
-        {
-          events: [{ type: 'changeMap', map: 'Kitchen' }],
-        },
-      ],
-    },
-  },
-  Kitchen: {
-    lowerSrc: '/images/maps/KitchenLower.png',
-    upperSrc: '/images/maps/KitchenUpper.png',
-    gameObjects: {
-      hero: new Person({
-        isPlayerControlled: true,
-        x: utils.withGrid(5),
-        y: utils.withGrid(5),
-      }),
-      npcB: new Person({
-        x: utils.withGrid(10),
-        y: utils.withGrid(8),
-        src: '/images/characters/people/npc3.png',
-        talking: [
-          {
-            events: [{ type: 'textMessage', text: 'You made it!', faceHero: 'npcB' }],
-          },
-        ],
-      }),
+      // [utils.asGridCoord(5, 10)]: [
+      //   {
+      //     events: [{ type: 'changeMap', map: 'Kitchen' }],
+      //   },
+      // ],
     },
   },
 };

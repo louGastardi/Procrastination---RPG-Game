@@ -47,6 +47,10 @@ class Sprite {
         [3, 3],
         [0, 3],
       ],
+      sleep: [
+        [1, 0],
+        [0, 0],
+      ],
     };
     this.currentAnimation = 'idle-right'; // config.currentAnimation || "idle-down";
     // Whitch frame is showing

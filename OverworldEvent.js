@@ -17,6 +17,19 @@ class OverworldEvent {
       }
     );
 
+     sleep(resolve) {
+    const who = this.map.gameObjects[this.event.who];
+    who.startBehavior(
+      {
+        map: this.map,
+      },
+      {
+        type: 'sleep',
+        direction: this.event.direction,
+        time: this.event.time,
+      }
+    );
+
     //Set up a handler to complete when correct person is done walking, then resolve the event
     const completeHandler = (e) => {
       if (e.detail.whoId === this.event.who) {

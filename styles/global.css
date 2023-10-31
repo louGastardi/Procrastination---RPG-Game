@@ -22,11 +22,11 @@ body {
 /* TAMANHO DA TELA */
 .game-container {
   position: relative;
-  width: 352px;
-  height: 198px;
+  width: 224px;
+  height: 224px;
   margin: 0 auto;
   outline: 1px solid #fff;
-
+  background-color: rgb(137, 206, 139);
   transform: scale(3) translateY(50%);
 }
 
