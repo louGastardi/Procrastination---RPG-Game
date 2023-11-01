@@ -2,6 +2,7 @@ class OverworldEvent {
   constructor({ map, event }) {
     this.map = map;
     this.event = event;
+    this.plantCounter = document.getElementById('plants-span');
   }
 
   stand(resolve) {
@@ -17,19 +18,6 @@ class OverworldEvent {
       }
     );
 
-     sleep(resolve) {
-    const who = this.map.gameObjects[this.event.who];
-    who.startBehavior(
-      {
-        map: this.map,
-      },
-      {
-        type: 'sleep',
-        direction: this.event.direction,
-        time: this.event.time,
-      }
-    );
-
     //Set up a handler to complete when correct person is done walking, then resolve the event
     const completeHandler = (e) => {
       if (e.detail.whoId === this.event.who) {
@@ -39,6 +27,7 @@ class OverworldEvent {
     };
     document.addEventListener('PersonStandComplete', completeHandler);
   }
+
   walk(resolve) {
     const who = this.map.gameObjects[this.event.who];
     who.startBehavior(
@@ -52,7 +41,7 @@ class OverworldEvent {
       }
     );
 
-    //Set up handler to complete when correct character is done walking, then resolve event
+    //Set up a handler to complete when correct person is done walking, then resolve the event
     const completeHandler = (e) => {
       if (e.detail.whoId === this.event.who) {
         document.removeEventListener('PersonWalkingComplete', completeHandler);
@@ -62,8 +51,8 @@ class OverworldEvent {
     document.addEventListener('PersonWalkingComplete', completeHandler);
   }
 
+  //NPC faces hero
   textMessage(resolve) {
-    //NPC Faces Hero
     if (this.event.faceHero) {
       const obj = this.map.gameObjects[this.event.faceHero];
       obj.direction = utils.oppositeDirection(this.map.gameObjects['hero'].direction);
@@ -76,8 +65,14 @@ class OverworldEvent {
     message.init(document.querySelector('.game-container'));
   }
 
-  changeMap(resolve) {
-    this.map.overworld.startMap(window.OverworldMaps[this.event.map]);
+  waterPlants(resolve) {
+    this.plantCounter++;
+    let element = document.getElementById('plants');
+
+    if (plantCounter === 3) {
+      element.classList.add('addCheck');
+    }
+
     resolve();
   }
 

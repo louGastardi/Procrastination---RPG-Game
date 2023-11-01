@@ -6,7 +6,31 @@ class Overworld {
     //Draw on Canvas
     this.ctx = this.canvas.getContext('2d');
     this.map = null;
+    this.hoursAndMinutes = ``;
+    this.hours = 8;
+    this.minutes = 0;
+
+    setInterval(() => {
+      this.clock();
+    }, 1000 / 15);
   }
+
+  clock() {
+    const leadingZero = (n) => (n > 9 ? n : `0${n}`);
+    this.minutes++;
+    if (this.minutes === 60) {
+      this.minutes = 0;
+      this.hours++;
+      if (this.hours >= 24) {
+        // this.endGame();
+      }
+    }
+
+    this.hoursAndMinutes = `${leadingZero(this.hours)}:${leadingZero(this.minutes)}`;
+
+    return (document.querySelector('#clock').innerHTML = this.hoursAndMinutes);
+  }
+
   startGameLoop() {
     const frame = () => {
       //Clear off Canvas
@@ -42,6 +66,7 @@ class Overworld {
         frame();
       });
     };
+
     frame();
   }
 

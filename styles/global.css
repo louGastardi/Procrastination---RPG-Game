@@ -19,15 +19,71 @@ body {
   overflow: hidden;
 }
 
+.all-elements {
+  display: flexbox;
+}
+
+.itens {
+  display: flexbox;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 /* TAMANHO DA TELA */
 .game-container {
-  position: relative;
   width: 224px;
   height: 224px;
   margin: 0 auto;
   outline: 1px solid #fff;
   background-color: rgb(137, 206, 139);
   transform: scale(3) translateY(50%);
+
+  position: relative;
+  top: -700px;
+}
+
+.clock-container {
+  position: relative;
+  left: 250px;
+}
+
+#clock {
+  font-family: 'Tahoma', sans-serif;
+  position: relative;
+  top: 150px;
+  left: 30px;
+  font-size: 50px;
+  color: white;
+}
+
+.clock-bg {
+  width: 200px;
+}
+
+.todo-list-container {
+  position: relative;
+
+  left: 260px;
+}
+
+.todo-list {
+  font-family: 'Tahoma', sans-serif;
+  font-weight: 700;
+  list-style-type: none;
+  line-height: 2em;
+  position: relative;
+  top: 230px;
+  left: -25px;
+  color: #333;
+  font-size: 16px;
+}
+
+.addCheck {
+  text-decoration: line-through;
+}
+
+.todo-bg {
+  width: 200px;
 }
 
 /* IMAGE SHARP  */

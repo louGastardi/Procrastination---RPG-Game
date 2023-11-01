@@ -102,7 +102,7 @@ window.OverworldMaps = {
         y: utils.withGrid(16),
         src: '/images/characters/people/sleepyCat.png',
         behaviorLoop: [
-          { type: 'sleep', direction: 'down', time: 1800 },
+          { type: '', direction: 'down', time: 1800 },
           { type: 'sleep', direction: 'down', time: 1300 },
         ],
         // talking: [
@@ -298,28 +298,41 @@ window.OverworldMaps = {
 
       //Objects that check To-Do
       [utils.asGridCoord(1, 4)]: true, //Book
-      [utils.asGridCoord(9, 10)]: true, //Plant
+      // [utils.asGridCoord(9, 10)]: true, //Plant
       [utils.asGridCoord(12, 4)]: true, //Plant
       [utils.asGridCoord(16, 14)]: true, //Plant
       [utils.asGridCoord(2, 12)]: true, //Trash
       [utils.asGridCoord(14, 7)]: true, //Trash
-      [utils.asGridCoord(14, 12)]: true, //CatFood
       [utils.asGridCoord(23, 12)]: true, //laundry
       [utils.asGridCoord(24, 12)]: true, //laundry
       [utils.asGridCoord(23, 6)]: true, //laundry
+    },
+    cutSceneSpaces: {
+      [utils.asGridCoord(9, 10)]: [
+        {
+          events: [{ type: 'textMessage', text: 'Cool! You have completed a task!' }, { type: 'waterPlants' }],
+        },
+      ],
 
       //Procratination Triggers
 
-      // [utils.asGridCoord(5, 11)]: true,
-      // [utils.asGridCoord(8, 7)]: true,
-      // [utils.asGridCoord(11, 14)]: true,
-      // [utils.asGridCoord(17, 8)]: true,
-      // [utils.asGridCoord(13, 5)]: true,
-      // [utils.asGridCoord(22, 16)]: true,
-      // [utils.asGridCoord(18, 16)]: true,
-      // [utils.asGridCoord(3, 15)]: true,
-    },
-    cutSceneSpaces: {
+      [utils.asGridCoord(5, 11)]: [{ events: [{ type: 'textMessage', text: 'Oops.. You just spent 30 minutes on instagram!' }] }],
+      [utils.asGridCoord(8, 7)]: [
+        {
+          events: [{ type: 'textMessage', text: 'Zzzzz...You took a 60-minute nap!' }],
+        },
+      ],
+      [utils.asGridCoord(11, 14)]: [
+        { events: [{ type: 'textMessage', text: 'Hello! That old friend of yours called you and you spent 30 minutes talking' }] },
+      ],
+      [utils.asGridCoord(17, 8)]: [{ events: [{ type: 'textMessage', text: 'Tetris is cool, right? You spent 60 minutes playing it!' }] }],
+      [utils.asGridCoord(13, 5)]: [
+        { events: [{ type: 'textMessage', text: "Maybe you shouldn't spend 30 minutes learning a new dance on tiktiok" }] },
+      ],
+      [utils.asGridCoord(22, 16)]: [{ events: [{ type: 'textMessage', text: 'Oops.. You just spent 30 minutes on instagram!' }] }],
+      [utils.asGridCoord(18, 16)]: [{ events: [{ type: 'textMessage', text: 'Oops.. You just spent 30 minutes on instagram!' }] }],
+      [utils.asGridCoord(3, 15)]: [{ events: [{ type: 'textMessage', text: 'Oops.. You just spent 30 minutes on instagram!' }] }],
+
       [utils.asGridCoord(7, 4)]: [
         {
           events: [

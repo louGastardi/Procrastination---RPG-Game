@@ -6,11 +6,28 @@
     <link href="/styles/TextMessage.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="game-container">
-      <!-- AUMENTAR O TAMANHO DA CANVAS -->
-      <canvas class="game-canvas" width="224" height="224"></canvas>
-    </div>
+    <div class="all-elements">
+      <section class="itens">
+        <div class="todo-list-container">
+          <ul class="todo-list">
+            <li>Work</li>
+            <li>Take out trash (<span id="#trash-span">0</span>/2)</li>
+            <li id="plants">Water plants (<span id="#plants-span">0</span>/3)</li>
+            <li>Do laundry</li>
+          </ul>
+          <img class="todo-bg" src="/images/icons/todo-list.png" alt="To do list Image" />
+        </div>
 
+        <div class="clock-container">
+          <h1 id="clock">08:00</h1>
+          <img class="clock-bg" src="/images/icons/clock.png" alt="clock Image" />
+        </div>
+      </section>
+      <div class="game-container">
+        <!-- AUMENTAR O TAMANHO DA CANVAS -->
+        <canvas class="game-canvas" width="224" height="224"></canvas>
+      </div>
+    </div>
     <script src="/utils.js"></script>
     <script src="/TextMessage.js"></script>
     <script src="/KeyPressListener.js"></script>
