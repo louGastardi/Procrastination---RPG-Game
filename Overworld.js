@@ -103,13 +103,14 @@ class Overworld {
 
     // PLAY CUTSCENE
     this.map.startCutscene([
+      { type: 'textMessage', text: 'It is one fine day on the life of Procrastinators...' },
       // { who: 'hero', type: 'walk', direction: 'right' },
       // { who: 'hero', type: 'walk', direction: 'right' },
       // { who: 'hero', type: 'walk', direction: 'right' },
       // { who: 'hero', type: 'walk', direction: 'down' },
-      // { who: 'hero', type: 'walk', direction: 'down' },
-      // { who: 'hero', type: 'stand', direction: 'down', time: 800 },
-      //{ type: 'textMessage', text: 'It is one fine day on the life of Procrastinators...' },
+      { who: 'hero', type: 'walk', direction: 'down' },
+      { who: 'hero', type: 'stand', direction: 'down', time: 800 },
+      // { type: 'textMessage', text: 'It is one fine day on the life of Procrastinators...' },
     ]);
   }
 }

@@ -102,8 +102,8 @@ window.OverworldMaps = {
         y: utils.withGrid(16),
         src: '/images/characters/people/sleepyCat.png',
         behaviorLoop: [
-          { type: '', direction: 'down', time: 1800 },
-          { type: 'sleep', direction: 'down', time: 1300 },
+          { type: 'stand', direction: 'down', time: 1800 },
+          { type: 'stand', direction: 'down', time: 1300 },
         ],
         // talking: [
         //   {
@@ -310,6 +310,11 @@ window.OverworldMaps = {
     cutSceneSpaces: {
       [utils.asGridCoord(9, 10)]: [
         {
+          events: [{ type: 'textMessage', text: 'Cool! You have completed a task!' }],
+        },
+      ],
+      [utils.asGridCoord(17, 14)]: [
+        {
           events: [{ type: 'textMessage', text: 'Cool! You have completed a task!' }, { type: 'waterPlants' }],
         },
       ],
@@ -336,13 +341,13 @@ window.OverworldMaps = {
       [utils.asGridCoord(7, 4)]: [
         {
           events: [
-            { who: 'npc2', type: 'walk', direction: 'left' },
-            { who: 'npc2', type: 'stand', direction: 'up', time: 500 },
-            { type: 'textMessage', text: 'Get the fuck out of here!' },
-            { who: 'npc2', type: 'walk', direction: 'right' },
-            { who: 'npc2', type: 'stand', direction: 'down', time: 500 },
-            { who: 'hero', type: 'walk', direction: 'down' },
-            { who: 'hero', type: 'walk', direction: 'left' },
+            // { who: 'npc2', type: 'walk', direction: 'left' },
+            // { who: 'npc2', type: 'stand', direction: 'up', time: 500 },
+            // { type: 'textMessage', text: 'Get the fuck out of here!' },
+            // { who: 'npc2', type: 'walk', direction: 'right' },
+            // { who: 'npc2', type: 'stand', direction: 'down', time: 500 },
+            // { who: 'hero', type: 'walk', direction: 'down' },
+            // { who: 'hero', type: 'walk', direction: 'left' },
           ],
         },
       ],

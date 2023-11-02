@@ -1,8 +1,8 @@
 class OverworldEvent {
-  constructor({ map, event }) {
+  constructor({ map, event, element }) {
     this.map = map;
     this.event = event;
-    this.plantCounter = document.getElementById('plants-span');
+    this.element = element;
   }
 
   stand(resolve) {
@@ -66,16 +66,18 @@ class OverworldEvent {
   }
 
   waterPlants(resolve) {
-    this.plantCounter++;
-    let element = document.getElementById('plants');
+    const plantsSpan = document.querySelector('#plants-span');
 
-    if (plantCounter === 3) {
-      element.classList.add('addCheck');
+    // Check if the span element exists
+    if (plantsSpan) {
+      const currentCount = parseInt(plantsSpan.textContent, 10); // Get the current count as an integer
+      const newCount = currentCount + 1; // Increment the count
+
+      plantsSpan.textContent = newCount; // Update the span text content with the new count
     }
 
     resolve();
   }
-
   init() {
     return new Promise((resolve) => {
       this[this.event.type](resolve);
