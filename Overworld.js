@@ -63,7 +63,7 @@ class Overworld {
       // Draw lower layer
       this.map.drawLowerImage(this.ctx, cameraFocus);
 
-      //Draw game Objects
+      //Draw gameObjects
       Object.values(this.map.gameObjects)
         .sort((a, b) => {
           return a.y - b.y;
