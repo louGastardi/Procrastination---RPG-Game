@@ -1,0 +1,55 @@
+.start {
+  position: absolute;
+  left: 300px;
+  top: -900px;
+}
+
+.game-winner {
+  position: absolute;
+  left: 300px;
+  top: -1900px;
+}
+
+.start-screen {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#end-image {
+  position: relative;
+  left: -150px;
+}
+
+.end-screen {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.TitleScreen_logo {
+  max-width: 50px;
+  image-rendering: initial;
+}
+
+#start-button,
+#restart-button {
+  font-family: 'Press Start 2P', sans-serif;
+  padding: 10px 20px;
+  margin: 50px 100px;
+  font-size: 22px;
+  background-color: #7843e6;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#start-button :hover {
+  background-color: #4b2891;
+}
+
+.start-screen p,
+.end-screen p {
+  color: #fff;
+}

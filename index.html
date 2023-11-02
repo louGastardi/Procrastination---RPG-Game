@@ -3,13 +3,57 @@
   <head>
     <title>Procrastination</title>
     <link href="/styles/global.css" rel="stylesheet" />
+    <link href="/styles/titleScreen.css" rel="stylesheet" />
     <link href="/styles/TextMessage.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div class="game-container">
-      <!-- AUMENTAR O TAMANHO DA CANVAS -->
-      <canvas class="game-canvas" width="224" height="224"></canvas>
+    <section class="start">
+      <div class="start-screen">
+        <canvas class="start-canvas" width="224" height="224"></canvas>
+        <img src="./images/logo_Big.png" alt="" class="TitleScreen-logo" />
+        <button id="start-button">Let's go!</button>
+        <p>To play use the arrowkeys and the scapace bar</p>
+      </div>
+    </section>
+
+    <div class="all-elements">
+      <section class="itens">
+        <div class="todo-list-container">
+          <ul class="todo-list">
+            <li id="work">Work</li>
+            <li id="trash">Take out trash</li>
+            <li id="bottle">Recycle bottle</li>
+            <li id="plant-bath">Water plant in bathroom</li>
+            <li id="plant-livingRoom">Water plant in livingroom</li>
+            <li id="plant-bedroom">Water plant in bedroom</li>
+            <li id="laundry">Do laundry</li>
+            <li id="book">Finish reading a book</li>
+          </ul>
+          <img class="todo-bg" src="/images/icons/todo-list.png" alt="To do list Image" />
+        </div>
+
+        <div class="clock-container">
+          <h1 id="clock">08:00</h1>
+          <img class="clock-bg" src="/images/icons/clock.png" alt="clock Image" />
+        </div>
+      </section>
+      <div class="game-container">
+        <!-- AUMENTAR O TAMANHO DA CANVAS -->
+        <canvas class="game-canvas" width="224" height="224"></canvas>
+      </div>
     </div>
+
+    <section class="game-end">
+      <div class="end-screen">
+        <canvas width="224" height="224"></canvas>
+        <img id="end-image" src="./images/logo_Big.png" alt="" class="TitleScreen-logo" />
+
+        <p>How about solving some real-life tasks now?</p>
+      </div>
+    </section>
 
     <script src="/utils.js"></script>
     <script src="/TextMessage.js"></script>

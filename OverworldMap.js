@@ -10,6 +10,7 @@ class OverworldMap {
     this.upperImage = new Image();
     this.upperImage.src = config.upperSrc;
     this.isCutscenePlaying = false;
+    this.clockIsRunning = Overworld.clockIsRunning;
   }
 
   drawLowerImage(ctx, cameraFocus) {
@@ -37,6 +38,7 @@ class OverworldMap {
   //Play cutscene
   async startCutscene(events) {
     this.isCutscenePlaying = true;
+    this.clockIsRunning = false;
     for (let i = 0; i < events.length; i++) {
       const eventHandler = new OverworldEvent({
         event: events[i],
@@ -45,6 +47,7 @@ class OverworldMap {
       await eventHandler.init();
     }
 
+    this.clockIsRunning = true;
     this.isCutscenePlaying = false;
 
     //Reset NPCs to their default behavior
@@ -94,28 +97,17 @@ window.OverworldMaps = {
     gameObjects: {
       hero: new Person({
         isPlayerControlled: true,
-        x: utils.withGrid(20),
-        y: utils.withGrid(16),
+        x: utils.withGrid(6),
+        y: utils.withGrid(7),
       }),
       cat: new Person({
         x: utils.withGrid(22),
         y: utils.withGrid(16),
         src: '/images/characters/people/sleepyCat.png',
         behaviorLoop: [
-          { type: 'sleep', direction: 'down', time: 1800 },
-          { type: 'sleep', direction: 'down', time: 1300 },
+          { type: 'stand', direction: 'down', time: 1800 },
+          { type: 'stand', direction: 'down', time: 1300 },
         ],
-        // talking: [
-        //   {
-        //     events: [{ type: 'textMessage', text: 'Hello there!', faceHero: 'npc1' }],
-        //   },
-        // ],
-      }),
-
-      npc2: new Person({
-        x: utils.withGrid(8),
-        y: utils.withGrid(5),
-        src: '/images/characters/people/npc1.png',
       }),
     },
     walls: {
@@ -301,35 +293,88 @@ window.OverworldMaps = {
       [utils.asGridCoord(9, 10)]: true, //Plant
       [utils.asGridCoord(12, 4)]: true, //Plant
       [utils.asGridCoord(16, 14)]: true, //Plant
-      [utils.asGridCoord(2, 12)]: true, //Trash
-      [utils.asGridCoord(14, 7)]: true, //Trash
-      [utils.asGridCoord(14, 12)]: true, //CatFood
+
       [utils.asGridCoord(23, 12)]: true, //laundry
       [utils.asGridCoord(24, 12)]: true, //laundry
-      [utils.asGridCoord(23, 6)]: true, //laundry
+    },
+    cutSceneSpaces: {
+      //tasks
+
+      [utils.asGridCoord(2, 4)]: [
+        {
+          events: [{ type: 'textMessage', text: 'Cool! You have completed a task!' }, { type: 'readBook' }],
+        },
+      ],
+      [utils.asGridCoord(23, 6)]: [
+        {
+          events: [{ type: 'textMessage', text: 'Cool! You have completed a task!' }, { type: 'goWork' }],
+        },
+      ],
+
+      [utils.asGridCoord(24, 13)]: [
+        {
+          events: [{ type: 'textMessage', text: 'Cool! You have completed a task!' }, { type: 'doLaundry' }],
+        },
+      ],
+
+      [utils.asGridCoord(14, 7)]: [
+        {
+          events: [{ type: 'textMessage', text: 'Cool! You have completed a task!' }, { type: 'trashOut' }],
+        },
+      ],
+
+      [utils.asGridCoord(2, 12)]: [
+        {
+          events: [{ type: 'textMessage', text: 'Cool! You have completed a task!' }, { type: 'recycleBottle' }],
+        },
+      ],
+
+      [utils.asGridCoord(9, 9)]: [
+        {
+          events: [{ type: 'textMessage', text: 'Cool! You have completed a task!' }, { type: 'waterPlantBedroom' }],
+        },
+      ],
+      [utils.asGridCoord(12, 5)]: [
+        {
+          events: [{ type: 'textMessage', text: 'Cool! You have completed a task!' }, { type: 'waterPlantLivingRoom' }],
+        },
+      ],
+
+      [utils.asGridCoord(17, 14)]: [
+        {
+          events: [{ type: 'textMessage', text: 'Cool! You have completed a task!' }, { type: 'waterPlantBath' }],
+        },
+      ],
 
       //Procratination Triggers
 
-      // [utils.asGridCoord(5, 11)]: true,
-      // [utils.asGridCoord(8, 7)]: true,
-      // [utils.asGridCoord(11, 14)]: true,
-      // [utils.asGridCoord(17, 8)]: true,
-      // [utils.asGridCoord(13, 5)]: true,
-      // [utils.asGridCoord(22, 16)]: true,
-      // [utils.asGridCoord(18, 16)]: true,
-      // [utils.asGridCoord(3, 15)]: true,
-    },
-    cutSceneSpaces: {
+      [utils.asGridCoord(5, 11)]: [{ events: [{ type: 'textMessage', text: 'Oops.. You just spent some time on instagram!' }] }],
+      [utils.asGridCoord(8, 7)]: [
+        {
+          events: [{ type: 'textMessage', text: 'Zzzzz...You took nap!' }],
+        },
+      ],
+      [utils.asGridCoord(11, 14)]: [
+        { events: [{ type: 'textMessage', text: 'Hello! That old friend of yours called you and you spent some time talking' }] },
+      ],
+      [utils.asGridCoord(17, 8)]: [{ events: [{ type: 'textMessage', text: 'Tetris is cool, right? You spent some time playing it!' }] }],
+      [utils.asGridCoord(13, 5)]: [
+        { events: [{ type: 'textMessage', text: "Maybe you shouldn't spend some time learning a new dance on tiktiok" }] },
+      ],
+      [utils.asGridCoord(22, 16)]: [{ events: [{ type: 'textMessage', text: 'Oops.. You just spent some time on instagram!' }] }],
+      [utils.asGridCoord(18, 16)]: [{ events: [{ type: 'textMessage', text: 'Zzzzz...You took a nap!' }] }],
+      [utils.asGridCoord(3, 15)]: [{ events: [{ type: 'textMessage', text: 'Tetris is cool, right? You spent some time playing it!' }] }],
+
       [utils.asGridCoord(7, 4)]: [
         {
           events: [
-            { who: 'npc2', type: 'walk', direction: 'left' },
-            { who: 'npc2', type: 'stand', direction: 'up', time: 500 },
-            { type: 'textMessage', text: 'Get the fuck out of here!' },
-            { who: 'npc2', type: 'walk', direction: 'right' },
-            { who: 'npc2', type: 'stand', direction: 'down', time: 500 },
-            { who: 'hero', type: 'walk', direction: 'down' },
-            { who: 'hero', type: 'walk', direction: 'left' },
+            // { who: 'npc2', type: 'walk', direction: 'left' },
+            // { who: 'npc2', type: 'stand', direction: 'up', time: 500 },
+            // { type: 'textMessage', text: 'Don't you have stuff to do?' },
+            // { who: 'npc2', type: 'walk', direction: 'right' },
+            // { who: 'npc2', type: 'stand', direction: 'down', time: 500 },
+            // { who: 'hero', type: 'walk', direction: 'down' },
+            // { who: 'hero', type: 'walk', direction: 'left' },
           ],
         },
       ],

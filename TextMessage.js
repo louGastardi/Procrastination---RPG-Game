@@ -9,9 +9,7 @@ class TextMessage {
     this.element = document.createElement('div');
     this.element.classList.add('TextMessage');
     this.element.innerHTML = `
-    <p class="TextMessage_p"></p>
-    <button class="TextMessage_button">Next</button>
-    `;
+    <p class="TextMessage_p"></p> `;
 
     //init typewriter effect
     this.revealingText = new RevealingText({
@@ -20,9 +18,6 @@ class TextMessage {
     });
 
     // Close Text Message
-    this.element.querySelector('button').addEventListener('click', () => {
-      this.done();
-    });
     this.actionListener = new KeyPressListener('Space', () => {
       this.done();
     });

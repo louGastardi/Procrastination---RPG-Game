@@ -6,6 +6,7 @@
   --menu-border-color: #a48465;
   --menu-font-color: #3a160d;
   --menu-selected-background: #7fc2ff;
+  font-family: 'Press Start 2P', sans-serif;
 }
 
 * {
@@ -13,21 +14,79 @@
 }
 
 body {
-  background: #333;
+  background-color: #343434;
   padding: 0;
   margin: 0;
   overflow: hidden;
 }
 
+.all-elements,
+.game-end {
+  display: none;
+}
+
+.itens {
+  display: flex;
+  flex-direction: column;
+}
+
 /* TAMANHO DA TELA */
 .game-container {
-  position: relative;
   width: 224px;
   height: 224px;
   margin: 0 auto;
   outline: 1px solid #fff;
   background-color: rgb(137, 206, 139);
   transform: scale(3) translateY(50%);
+
+  position: relative;
+  top: -1100px;
+  left: 100px;
+}
+
+.clock-container {
+  position: relative;
+  left: 200px;
+  top: -309px;
+}
+
+#clock {
+  position: relative;
+  top: 120px;
+  left: 30px;
+  font-size: 30px;
+  color: white;
+}
+
+.clock-bg {
+  width: 200px;
+}
+
+.todo-list-container {
+  position: relative;
+  top: -250px;
+  left: 50px;
+}
+
+.todo-list {
+  font-weight: 500;
+  list-style-type: none;
+  line-height: 2.5em;
+  position: relative;
+  top: 480px;
+  left: -20px;
+  color: black;
+  font-size: 18px;
+}
+
+.addCheck {
+  text-decoration: line-through;
+  text-decoration-thickness: 4px;
+  text-decoration-color: #ff0000aa;
+}
+
+.todo-bg {
+  width: 30%;
 }
 
 /* IMAGE SHARP  */

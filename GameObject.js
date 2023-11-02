@@ -7,8 +7,9 @@ class GameObject {
     this.direction = config.direction || 'down';
     this.sprite = new Sprite({
       gameObject: this,
-      src: config.src || '/images/characters/people/npc2.png',
+      src: config.src || '/images/characters/people/npc3.png',
     });
+
     this.behaviorLoop = config.behaviorLoop || [];
     this.behaviorLoopIndex = 0;
 
@@ -19,7 +20,7 @@ class GameObject {
     this.isMounted = true;
     map.addWall(this.x, this.y);
 
-    //If we have a behavior, kick after small delay
+    //If we have a behavior, kick off after a short delay
     setTimeout(() => {
       this.doBehaviorEvent(map);
     }, 10);
@@ -28,7 +29,8 @@ class GameObject {
   update() {}
 
   async doBehaviorEvent(map) {
-    // If its a Cutscene or if there is no configuration, don`t do anaything
+    //Don't do anything if there is a more important cutscene or I don't have config to do anything
+    //anyway.
     if (map.isCutscenePlaying || this.behaviorLoop.length === 0 || this.isStanding) {
       return;
     }
@@ -37,7 +39,7 @@ class GameObject {
     let eventConfig = this.behaviorLoop[this.behaviorLoopIndex];
     eventConfig.who = this.id;
 
-    //create an event instance out of our next event config
+    //Create an event instance out of our next event config
     const eventHandler = new OverworldEvent({ map, event: eventConfig });
     await eventHandler.init();
 
@@ -47,7 +49,7 @@ class GameObject {
       this.behaviorLoopIndex = 0;
     }
 
-    //Restart the loop
+    //Do it again!
     this.doBehaviorEvent(map);
   }
 }
