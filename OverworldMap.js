@@ -108,11 +108,6 @@ window.OverworldMaps = {
           { type: 'stand', direction: 'down', time: 1800 },
           { type: 'stand', direction: 'down', time: 1300 },
         ],
-        // talking: [
-        //   {
-        //     events: [{ type: 'textMessage', text: 'Hello there!', faceHero: 'npc1' }],
-        //   },
-        // ],
       }),
     },
     walls: {
