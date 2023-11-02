@@ -97,8 +97,8 @@ window.OverworldMaps = {
     gameObjects: {
       hero: new Person({
         isPlayerControlled: true,
-        x: utils.withGrid(20),
-        y: utils.withGrid(16),
+        x: utils.withGrid(6),
+        y: utils.withGrid(7),
       }),
       cat: new Person({
         x: utils.withGrid(22),
@@ -113,12 +113,6 @@ window.OverworldMaps = {
         //     events: [{ type: 'textMessage', text: 'Hello there!', faceHero: 'npc1' }],
         //   },
         // ],
-      }),
-
-      npc2: new Person({
-        x: utils.withGrid(8),
-        y: utils.withGrid(5),
-        src: '/images/characters/people/npc1.png',
       }),
     },
     walls: {
