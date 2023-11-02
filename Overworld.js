@@ -1,5 +1,8 @@
 class Overworld {
   constructor(config) {
+    //StartScreen
+    this.startScreen = document.querySelector('#game-intro');
+
     //Element for the game to operate on - Game container
     this.element = config.element;
     this.canvas = this.element.querySelector('.game-canvas');
@@ -16,17 +19,30 @@ class Overworld {
     this.minutes = 0;
     this.clockIsRunning = true;
 
-    setInterval(() => {
-      if (this.clockIsRunning) {
-        this.clock();
-      }
-    }, 1000 / 15);
-
     //Check Game Over
     this.liElements = document.getElementsByTagName('li');
     this.gameWinner = false;
+
+    //start Button
+    this.startButton = document.getElementById('start-button');
   }
 
+  start() {
+    this.startMap(window.OverworldMaps.Home);
+    this.bindActionInput();
+    this.bindHeroPositionCheck();
+    this.gameItens.style.display = 'block';
+    this.directionInput = new DirectionInput();
+    this.directionInput.start();
+
+    this.startGameLoop();
+
+    // PLAY CUTSCENE
+    this.map.startCutscene([
+      { type: 'textMessage', text: 'It is one fine day on the life of Procrastinators...' },
+      { type: 'textMessage', text: 'It is one fine day on the life of Procrastinators...' },
+    ]);
+  }
   clock() {
     const leadingZero = (n) => (n > 9 ? n : `0${n}`);
     this.minutes++;
@@ -45,6 +61,10 @@ class Overworld {
   }
 
   startGameLoop() {
+    setInterval(() => {
+      this.clock();
+    }, 1000 / 15);
+
     const frame = () => {
       //Clear off Canvas
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -105,28 +125,6 @@ class Overworld {
     this.map = new OverworldMap(mapConfig);
     this.map.overworld = this;
     this.map.mountObjects();
-  }
-
-  start() {
-    this.startMap(window.OverworldMaps.Home);
-    this.bindActionInput();
-    this.bindHeroPositionCheck();
-    this.directionInput = new DirectionInput();
-    this.directionInput.start();
-
-    this.startGameLoop();
-
-    // PLAY CUTSCENE
-    this.map.startCutscene([
-      { type: 'textMessage', text: 'It is one fine day on the life of Procrastinators...' },
-      // { who: 'hero', type: 'walk', direction: 'right' },
-      // { who: 'hero', type: 'walk', direction: 'right' },
-      // { who: 'hero', type: 'walk', direction: 'right' },
-      // { who: 'hero', type: 'walk', direction: 'down' },
-      { who: 'hero', type: 'walk', direction: 'down' },
-      { who: 'hero', type: 'stand', direction: 'down', time: 800 },
-      // { type: 'textMessage', text: 'It is one fine day on the life of Procrastinators...' },
-    ]);
   }
 
   isGameOver() {

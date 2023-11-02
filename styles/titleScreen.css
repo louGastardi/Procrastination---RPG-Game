@@ -1,0 +1,32 @@
+.start {
+  position: absolute;
+  left: 300px;
+  top: -900px;
+}
+
+.start-screen {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.TitleScreen_logo {
+  max-width: 50px;
+  image-rendering: initial;
+}
+
+#start-button {
+  padding: 10px 20px;
+  margin: 50px 100px;
+  font-size: 22px;
+  background-color: #7843e6;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#start-button :hover {
+  background-color: #4b2891;
+}

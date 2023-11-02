@@ -3,12 +3,22 @@
   <head>
     <title>Procrastination</title>
     <link href="/styles/global.css" rel="stylesheet" />
+    <link href="/styles/titleScreen.css" rel="stylesheet" />
     <link href="/styles/TextMessage.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <section class="start">
+      <div class="start-screen">
+        <canvas class="start-canvas" width="224" height="224"></canvas>
+        <img src="./images/logo_Big.png" alt="" class="TitleScreen-logo" />
+        <button id="start-button">Let's go!</button>
+        <p>To play use the arrowkeys and the scapace bar</p>
+      </div>
+    </section>
+
     <div class="all-elements">
       <section class="itens">
         <div class="todo-list-container">
@@ -34,13 +44,16 @@
         <!-- AUMENTAR O TAMANHO DA CANVAS -->
         <canvas class="game-canvas" width="224" height="224"></canvas>
       </div>
+      <p class="how-to-play">Use Arrow Keys to move. Use Space to prompt/talk.</p>
     </div>
     <div id="game-end">
-      <img src="./images/logo.png" alt="" class="logo-img" />
+      <img src="./images/logo.png" alt="" class="TitleScreen-logo" />
       <h1>Game Over</h1>
       <br />
-      <button id="restart-button">Restart</button>
+
+      <button id="restart-button">procrastinate a little more!</button>
     </div>
+
     <script src="/utils.js"></script>
     <script src="/TextMessage.js"></script>
     <script src="/KeyPressListener.js"></script>

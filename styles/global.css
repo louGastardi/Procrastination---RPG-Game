@@ -14,14 +14,14 @@
 }
 
 body {
-  background: #333;
+  background-color: #f0f0f0;
   padding: 0;
   margin: 0;
   overflow: hidden;
 }
 
 .all-elements {
-  display: flexbox;
+  display: none;
 }
 
 .itens {
