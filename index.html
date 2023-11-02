@@ -10,10 +10,14 @@
       <section class="itens">
         <div class="todo-list-container">
           <ul class="todo-list">
-            <li>Work</li>
-            <li>Take out trash (<span id="#trash-span">0</span>/2)</li>
-            <li id="plants">Water plants (<span id="#plants-span">0</span>/3)</li>
-            <li>Do laundry</li>
+            <li class="addCheck" id="work">Work</li>
+            <li class="addCheck" id="trash">Take out trash</li>
+            <li class="addCheck" id="bottle">Recycle bottle</li>
+            <li id="plant-bath">Water plant in bathroom</li>
+            <li class="addCheck" id="plant-livingRoom">Water plant in livingroom</li>
+            <li class="addCheck" id="plant-bedroom">Water plant in bedroom</li>
+            <li class="addCheck" id="laundry">Do laundry</li>
+            <li class="addCheck" id="book">Finish reading a book</li>
           </ul>
           <img class="todo-bg" src="/images/icons/todo-list.png" alt="To do list Image" />
         </div>
@@ -27,6 +31,12 @@
         <!-- AUMENTAR O TAMANHO DA CANVAS -->
         <canvas class="game-canvas" width="224" height="224"></canvas>
       </div>
+    </div>
+    <div id="game-end">
+      <img src="./images/logo.png" alt="" class="logo-img" />
+      <h1>Game Over</h1>
+      <br />
+      <button id="restart-button">Restart</button>
     </div>
     <script src="/utils.js"></script>
     <script src="/TextMessage.js"></script>

@@ -86,6 +86,10 @@ body {
   width: 200px;
 }
 
+#game-end {
+  display: none;
+}
+
 /* IMAGE SHARP  */
 .game-container canvas {
   image-rendering: pixelated;

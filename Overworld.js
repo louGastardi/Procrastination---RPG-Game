@@ -3,16 +3,28 @@ class Overworld {
     //Element for the game to operate on - Game container
     this.element = config.element;
     this.canvas = this.element.querySelector('.game-canvas');
+
+    //EndScreen
+    this.gameEndScreen = document.querySelector('#game-end');
+    this.gameItens = document.querySelector('.all-elements');
     //Draw on Canvas
     this.ctx = this.canvas.getContext('2d');
     this.map = null;
+    //Clock
     this.hoursAndMinutes = ``;
     this.hours = 8;
     this.minutes = 0;
+    this.clockIsRunning = true;
 
     setInterval(() => {
-      this.clock();
+      if (this.clockIsRunning) {
+        this.clock();
+      }
     }, 1000 / 15);
+
+    //Check Game Over
+    this.liElements = document.getElementsByTagName('li');
+    this.gameWinner = false;
   }
 
   clock() {
@@ -22,7 +34,8 @@ class Overworld {
       this.minutes = 0;
       this.hours++;
       if (this.hours >= 24) {
-        // this.endGame();
+        this.gameItens.style.display = 'none';
+        this.gameEndScreen.style.display = 'block';
       }
     }
 
@@ -61,6 +74,8 @@ class Overworld {
 
       //Draw upper layer
       this.map.drawUpperImage(this.ctx, cameraFocus);
+
+      this.isGameOver();
 
       requestAnimationFrame(() => {
         frame();
@@ -112,5 +127,20 @@ class Overworld {
       { who: 'hero', type: 'stand', direction: 'down', time: 800 },
       // { type: 'textMessage', text: 'It is one fine day on the life of Procrastinators...' },
     ]);
+  }
+
+  isGameOver() {
+    for (let i = 0; i < this.liElements.length; i++) {
+      if (this.liElements[i].classList.contains('addCheck')) {
+        this.gameWinner = true;
+      } else {
+        this.gameWinner = false;
+        return;
+      }
+    }
+    if (this.gameWinner) {
+      this.gameItens.style.display = 'none';
+      this.gameEndScreen.style.display = 'block';
+    }
   }
 }

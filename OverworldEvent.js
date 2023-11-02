@@ -3,6 +3,16 @@ class OverworldEvent {
     this.map = map;
     this.event = event;
     this.element = element;
+
+    // get HTML elements
+    this.plantBath = document.querySelector('#plant-bath');
+    this.plantLivingRoom = document.querySelector('#plant-livingRoom');
+    this.plantBedroom = document.querySelector('#plant-bedroom');
+    this.bottle = document.querySelector('#bottle');
+    this.trash = document.querySelector('#trash');
+    this.work = document.querySelector('#work');
+    this.laundry = document.querySelector('#laundry');
+    this.book = document.querySelector('#book');
   }
 
   stand(resolve) {
@@ -65,19 +75,56 @@ class OverworldEvent {
     message.init(document.querySelector('.game-container'));
   }
 
-  waterPlants(resolve) {
-    const plantsSpan = document.querySelector('#plants-span');
+  // tasks
 
-    // Check if the span element exists
-    if (plantsSpan) {
-      const currentCount = parseInt(plantsSpan.textContent, 10); // Get the current count as an integer
-      const newCount = currentCount + 1; // Increment the count
-
-      plantsSpan.textContent = newCount; // Update the span text content with the new count
-    }
+  doLaundry(resolve) {
+    this.laundry.classList.add('addCheck');
 
     resolve();
   }
+
+  goWork(resolve) {
+    this.work.classList.add('addCheck');
+
+    resolve();
+  }
+
+  waterPlantBath(resolve) {
+    this.plantBath.classList.add('addCheck');
+
+    resolve();
+  }
+
+  waterPlantLivingRoom(resolve) {
+    this.plantLivingRoom.classList.add('addCheck');
+
+    resolve();
+  }
+
+  waterPlantBedroom(resolve) {
+    this.plantBedroom.classList.add('addCheck');
+
+    resolve();
+  }
+
+  recycleBottle(resolve) {
+    this.bottle.classList.add('addCheck');
+
+    resolve();
+  }
+
+  trashOut(resolve) {
+    this.trash.classList.add('addCheck');
+
+    resolve();
+  }
+
+  readBook(resolve) {
+    this.book.classList.add('addCheck');
+
+    resolve();
+  }
+
   init() {
     return new Promise((resolve) => {
       this[this.event.type](resolve);
