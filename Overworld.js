@@ -8,7 +8,7 @@ class Overworld {
     this.canvas = this.element.querySelector('.game-canvas');
 
     //EndScreen
-    this.gameEndScreen = document.querySelector('#game-end');
+    this.gameEndScreen = document.querySelector('.game-end');
     this.gameItens = document.querySelector('.all-elements');
     //Draw on Canvas
     this.ctx = this.canvas.getContext('2d');
@@ -39,8 +39,8 @@ class Overworld {
 
     // PLAY CUTSCENE
     this.map.startCutscene([
-      { type: 'textMessage', text: 'It is one fine day on the life of Procrastinators...' },
-      { type: 'textMessage', text: 'It is one fine day on the life of Procrastinators...' },
+      { type: 'textMessage', text: "it looks like it's going to be a long day full of tasks..." },
+      { type: 'textMessage', text: "Don't waste time procrastinating and get everything done before midnight!" },
     ]);
   }
   clock() {
@@ -137,8 +137,8 @@ class Overworld {
       }
     }
     if (this.gameWinner) {
-      this.gameItens.style.display = 'none';
-      this.gameEndScreen.style.display = 'block';
+      document.getElementsByClassName('all-elements')[0].style.display = 'none';
+      document.getElementsByClassName('game-end')[0].style.display = 'flex';
     }
   }
 }

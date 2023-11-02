@@ -14,18 +14,19 @@
 }
 
 body {
-  background-color: #f0f0f0;
+  background-color: #343434;
   padding: 0;
   margin: 0;
   overflow: hidden;
 }
 
-.all-elements {
+.all-elements,
+.game-end {
   display: none;
 }
 
 .itens {
-  display: flexbox;
+  display: flex;
   flex-direction: column;
 }
 
@@ -86,10 +87,6 @@ body {
 
 .todo-bg {
   width: 30%;
-}
-
-#game-end {
-  display: none;
 }
 
 /* IMAGE SHARP  */

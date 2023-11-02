@@ -24,13 +24,13 @@
         <div class="todo-list-container">
           <ul class="todo-list">
             <li id="work">Work</li>
-            <li id="trash">Take out trash</li>
-            <li id="bottle">Recycle bottle</li>
-            <li id="plant-bath">Water plant in bathroom</li>
-            <li id="plant-livingRoom">Water plant in livingroom</li>
-            <li id="plant-bedroom">Water plant in bedroom</li>
-            <li id="laundry">Do laundry</li>
-            <li id="book">Finish reading a book</li>
+            <li class="addCheck" id="trash">Take out trash</li>
+            <li class="addCheck" id="bottle">Recycle bottle</li>
+            <li class="addCheck" id="plant-bath">Water plant in bathroom</li>
+            <li class="addCheck" id="plant-livingRoom">Water plant in livingroom</li>
+            <li class="addCheck" id="plant-bedroom">Water plant in bedroom</li>
+            <li class="addCheck" id="laundry">Do laundry</li>
+            <li class="addCheck" id="book">Finish reading a book</li>
           </ul>
           <img class="todo-bg" src="/images/icons/todo-list.png" alt="To do list Image" />
         </div>
@@ -44,15 +44,16 @@
         <!-- AUMENTAR O TAMANHO DA CANVAS -->
         <canvas class="game-canvas" width="224" height="224"></canvas>
       </div>
-      <p class="how-to-play">Use Arrow Keys to move. Use Space to prompt/talk.</p>
     </div>
-    <div id="game-end">
-      <img src="./images/logo.png" alt="" class="TitleScreen-logo" />
-      <h1>Game Over</h1>
-      <br />
 
-      <button id="restart-button">procrastinate a little more!</button>
-    </div>
+    <section class="game-end">
+      <div class="end-screen">
+        <canvas width="224" height="224"></canvas>
+        <img id="end-image" src="./images/logo_Big.png" alt="" class="TitleScreen-logo" />
+        <button id="restart-button">Let's waste some more time!</button>
+        <p>How about solving some real-life tasks now?</p>
+      </div>
+    </section>
 
     <script src="/utils.js"></script>
     <script src="/TextMessage.js"></script>
