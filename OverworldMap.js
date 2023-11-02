@@ -92,8 +92,8 @@ class OverworldMap {
 
 window.OverworldMaps = {
   Home: {
-    lowerSrc: '/images/maps/mapHome.png',
-    upperSrc: '/images/maps/mapHome_upper.png',
+    lowerSrc: 'images/maps/mapHome.png',
+    upperSrc: 'images/maps/mapHome_upper.png',
     gameObjects: {
       hero: new Person({
         isPlayerControlled: true,
@@ -103,7 +103,7 @@ window.OverworldMaps = {
       cat: new Person({
         x: utils.withGrid(22),
         y: utils.withGrid(16),
-        src: '/images/characters/people/sleepyCat.png',
+        src: 'images/characters/people/sleepyCat.png',
         behaviorLoop: [
           { type: 'stand', direction: 'down', time: 1800 },
           { type: 'stand', direction: 'down', time: 1300 },
