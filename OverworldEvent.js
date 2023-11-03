@@ -61,8 +61,8 @@ class OverworldEvent {
     document.addEventListener('PersonWalkingComplete', completeHandler);
   }
 
-  //NPC faces hero
   textMessage(resolve) {
+    //NPC faces hero
     if (this.event.faceHero) {
       const obj = this.map.gameObjects[this.event.faceHero];
       obj.direction = utils.oppositeDirection(this.map.gameObjects['hero'].direction);
