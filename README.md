@@ -43,4 +43,4 @@ Classes:
 <h2></h2>
 
 <h2>Link</h2>
-  Click <a href="https://magnificent-lamington-765978.netlify.app/">here</a> to see the deployed game.
+  Click <a href="https://newmain--magnificent-lamington-765978.netlify.app/">here</a> to see the deployed game.
