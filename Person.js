@@ -36,10 +36,9 @@ class Person extends GameObject {
     //block character from walking into object
     if (behavior.type === 'walk') {
       if (state.map.isSpaceTaken(this.x, this.y, this.direction)) {
-        behavior.retry &&
-          setTimeout(() => {
-            this.startBehavior(state, behavior);
-          }, 50);
+        setTimeout(() => {
+          this.startBehavior(state, behavior);
+        }, 50);
         return;
       }
 
